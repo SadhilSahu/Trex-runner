@@ -12,6 +12,7 @@ var TrexCollided;
 var ResetTrexIMG,ResetTrex,TrexGameOverIMG,TrexGameOver;
 var jumpSound,Diesound,CheckpointSound;
 var message="Good evening";
+var touches=[];
 
 function preload(){
   TrexImages=loadAnimation("trex1.png","trex3.png","trex4.png");
@@ -95,9 +96,10 @@ if(Ground.x<0){
   }
 
 //trex jump
-if(keyDown("Space")&&Trex.y>height-175){
+if(touches.length>0||keyDown("Space")&&Trex.y>height-175){
   Trex.velocityY=-15;
   jumpSound.play();
+  touches=[];
   }
 
 //trex gravity
